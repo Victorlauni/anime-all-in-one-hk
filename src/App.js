@@ -1,19 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import { getViuUpdate } from './lib/viuFetch';
+import Navbar from './component/Navbar.js';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
+import { GlobalContext } from './globalContext';
+import Bangumi from './component/Bangumi.js';
+
+const theme = createMuiTheme({
+  palette: {
+    type: "dark"
+  },
+  overrides: {
+    MuiAppBar: {
+      colorPrimary: {
+        backgroundColor: "#FFF1"
+      }
+    }
+  }
+})
 
 function App() {
-  const [viuItem, setViuItem] = useState(false);
-  useEffect(() => getViuUpdate().then(res => {
-    console.log(res);
-    setViuItem(JSON.stringify(res));
-  }), []);
+  const [session, setSession] = useState("")
   return (
-    <div>
-      {viuItem}
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <GlobalContext.Provider value={{selectedSession: session}}>
+        <Navbar changeSession={setSession}/>
+        <Bangumi/>
+      </GlobalContext.Provider>
+    </ThemeProvider>
+  )
+  
 }
 
 export default App;
