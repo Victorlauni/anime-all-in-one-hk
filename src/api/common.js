@@ -11,6 +11,7 @@ export const getWatchingBangumi = async () => {
       {
         title: "Title",
         description: "Desc",
+        visualURL: "https://m.media-amazon.com/images/M/MV5BYmJhMDYzYzMtNTVlZS00MzgwLWE3ZjAtN2FhZTBlOGQzZmFmXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_.jpg",
         episodes: {
           1: {
             sources: {
@@ -35,6 +36,7 @@ export const getWatchingBangumi = async () => {
       {
         title: "Title",
         description: "Desc",
+        visualURL: "https://i.imgur.com/Xsk9g.jpg",
         episodes: {
           1: {
             sources: {
