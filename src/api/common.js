@@ -10,60 +10,11 @@ export const getAllSession = async () => {
   return Promise.resolve(result)
 }
 
-export const getWatchingBangumi = async () => {
-  const mock = {
-    data: [
-      {
-        title: "Title",
-        description: "Desc",
-        visualURL: "https://m.media-amazon.com/images/M/MV5BYmJhMDYzYzMtNTVlZS00MzgwLWE3ZjAtN2FhZTBlOGQzZmFmXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_.jpg",
-        episodes: {
-          1: {
-            sources: {
-              "Viu": "https://viu.com",
-              "Youtube": "https://youtube.com"
-            }
-          },
-          2: {
-            sources: {
-              "Viu": "https://viu.com",
-              "Youtube": "https://youtube.com"
-            }
-          },
-          3: {
-            sources: {
-              "Viu": "https://viu.com",
-              "Youtube": "https://youtube.com"
-            }
-          }
-        }
-      },
-      {
-        title: "Title",
-        description: "Desc",
-        visualURL: "https://i.imgur.com/Xsk9g.jpg",
-        episodes: {
-          1: {
-            sources: {
-              "Viu": "https://viu.com",
-              "Youtube": "https://youtube.com"
-            }
-          },
-          2: {
-            sources: {
-              "Viu": "https://viu.com",
-              "Youtube": "https://youtube.com"
-            }
-          },
-          3: {
-            sources: {
-              "Viu": "https://viu.com",
-              "Youtube": "https://youtube.com"
-            }
-          }
-        }
-      }
-    ]
-  }
-  return Promise.resolve(mock.data)
+export const getWatchingBangumi = async (season) => {
+  let result = db.collection('bangumi').where('season','==',season).get().then(col => {
+    return col.docs.map(doc => {
+      return {id: doc.id, ...doc.data()}
+    })
+  })
+  return Promise.resolve(result)
 }

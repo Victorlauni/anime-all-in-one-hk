@@ -1,22 +1,25 @@
-import { Button, Card, CardContent, Container, Paper } from '@material-ui/core'
+import { Container } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import { getWatchingBangumi } from '../api/common'
-import { db } from '../lib/firebase'
 import Bangumi from './Bangumi'
+import BangumiThumbnail from './BangumiThumbnail';
+import style from '../style/BangumiList.module.scss'
 
-export default function BangumiList() {
-  const [selectedEpisode, setSelectedEpisode] = useState(undefined)
+export default function BangumiList(prop) {
+  const {session} = prop;
   const [bangumiList, setBangumiList] = useState([])
   useEffect(() => {
-    console.log("HIHI")
-    db.collection('bangumi').get().then((val) => {
-      console.log(val)
-    })
-    getWatchingBangumi().then(val => setBangumiList(val))
-  }, [])
+    session && getWatchingBangumi(session).then(val => setBangumiList(val))
+  }, [session])
   return (
     <Container>
-      {bangumiList.map(val => <Bangumi bangumi={val}/>)}
+      <div className={style.root}>
+        {bangumiList.map(val => <BangumiThumbnail bangumi={val}/>)}
+        {bangumiList.map(val => <BangumiThumbnail bangumi={val}/>)}
+        {bangumiList.map(val => <BangumiThumbnail bangumi={val}/>)}
+        {bangumiList.map(val => <BangumiThumbnail bangumi={val}/>)}
+
+      </div>
     </Container>
   )
 }
