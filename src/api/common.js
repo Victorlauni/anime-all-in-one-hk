@@ -18,3 +18,8 @@ export const getWatchingBangumi = async (season) => {
   })
   return Promise.resolve(result)
 }
+
+export const getBangumiByID = async (id) => {
+  let result = db.doc('bangumi/'+id).get().then(res => res.data())
+  return Promise.resolve(result)
+}
