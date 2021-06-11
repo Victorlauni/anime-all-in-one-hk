@@ -44,7 +44,7 @@ export default function Navbar(props) {
               listOfSession.map(val => <MenuItem>{val}</MenuItem>)
             }
           </Menu>
-          <Button variant="outlined">
+          <Button variant="outlined" style={{display: 'none'}}>
             Login
           </Button>
         </Toolbar>
