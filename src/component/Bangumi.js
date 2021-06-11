@@ -19,7 +19,7 @@ export default function Bangumi(props) {
         </div>
         <Collapse in={selectedEpisode}>
           <div style={{marginTop: 15, minHeight: 40}}>
-            {selectedEpisode && Object.entries(val.episodes[selectedEpisode]?.sources).map(([key, val]) => <Button
+            {selectedEpisode && Object.entries(val.episodes[selectedEpisode]?.source).map(([key, val]) => <Button
               onClick={() => window.open(val, '_black')}>{key}</Button>)}
           </div>
         </Collapse>

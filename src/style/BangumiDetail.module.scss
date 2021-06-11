@@ -1,0 +1,32 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+.section1 {
+  width: 100%;
+  //display: flex;
+  //flex-direction: row;
+  //justify-content: space-between;
+  flex-basis: 200px;
+  & > img {
+    float: right;
+    width: 200px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+  & > h1 {
+    flex-grow: 1;
+  }
+}
+.section2 {
+  display: flex;
+  flex-wrap: wrap;
+}
+.collapse {
+  margin-top: 10px;
+  min-height: 30px;
+  background-color: #FFF1;
+  border-radius: 5px;
+  padding: 5px 0px;
+}
