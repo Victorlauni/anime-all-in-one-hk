@@ -13,6 +13,7 @@
 
 # config
 # /src/lib/firebase_config.js
+/functions/cred/youtubeAPI.js
 
 # misc
 .DS_Store
